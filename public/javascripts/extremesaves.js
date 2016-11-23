@@ -13,6 +13,20 @@ function sayHello() {
 	}
 }
 
+/* checks the pokemon's max level, if it is over 100, then reset it to 100, if under 1 then reset to 1 */
+function checkMaxLv() {
+	var lv = document.getElementById('pokemon_lv');
+	if (lv.value > 100) {
+		lv.value = 100
+	} else if (lv.value < 1) {
+		lv.value = 1;
+	} else {
+		lv.value = lv.value; // I dont need this, but can i just leave an empty else statement?
+	}
+}
+
+/* */
+
 function sayHi() {
 	console.log("extreme saves!!!!");
 	var reader = new FileReader();
@@ -34,6 +48,7 @@ function setDefault() {
 	document.getElementById(1).className = 'panel panel-danger'
 }
 
+/* Highlights the clicked box inside editbox page */
 function selectPokemonInBox(index) {
 	console.log("select this pokemon in box");
 	for (i = 1; i < 31; i++) {
