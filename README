@@ -1,4 +1,3 @@
-to start database, go into /pokemon and use the following command:
-mongod --dbpath ~/path/to/pokemon/data
+to start db use mongod --dbpath ~/path/to/pokemon/data
 
 to start server use npm start
