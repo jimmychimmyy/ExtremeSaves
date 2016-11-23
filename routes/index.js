@@ -89,6 +89,24 @@ router.get('/newuser', function(req, res) {
     res.render('newuser', { title: 'Add New User' });
 });
 
+router.post('/savetrainer', function(req, res) {
+    var db = req.db;
+    var data = req.body;
+    var collection = db.get('savefiles');
+    collection.insert({
+        'name' : data.name, // trainer name
+        'tid' : data.tid, // trainer id
+        'sid' : data.sid, // secret id
+        'start' : data.start, // this should be the start date
+    }, function(err, doc) {
+        if (err) {
+            res.send("error adding trainer to db");
+        } else {
+            res.send("successfully added trainer to db");
+        }
+    });
+});
+
 /* POST to Add User Service */
 router.post('/adduser', function(req, res) {
 
