@@ -89,6 +89,21 @@ router.get('/newuser', function(req, res) {
     res.render('newuser', { title: 'Add New User' });
 });
 
+/* GET a single pokemon from pokedex */
+router.get('/getpokemon', function(req, res) {
+    var db = req.db;
+    var data = req.body;
+    var pokedex = db.get('pokedex');
+    pokedex.find({'index': data._id}, {}, function(e, docs) { // the _id should match the species' national dex id
+        if (err) {
+            res.send("error retrieving data");
+        } else {
+            res.send(docs); // need to check the format of docs to see if it returns a single pokedex object
+        }
+    });
+});
+
+/* POST to add a single trainer to savefile */
 router.post('/savetrainer', function(req, res) {
     var db = req.db;
     var data = req.body;
@@ -102,7 +117,7 @@ router.post('/savetrainer', function(req, res) {
         if (err) {
             res.send("error adding trainer to db");
         } else {
-            res.send("successfully added trainer to db");
+            res.send("successfully added trainer to savefiles");
         }
     });
 });
