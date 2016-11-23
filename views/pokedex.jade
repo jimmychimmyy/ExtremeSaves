@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	h1.
+		Pokedex
+	ul
+		each pokemon, i in pokedex
+			li
+				a(href="mailto:#{pokemon.Ndex}")= pokemon.Pokémon
+
+	body
+		script(src="/javascripts/extremesaves.js")
+		script.
+			sayHi()

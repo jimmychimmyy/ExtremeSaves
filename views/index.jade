@@ -1,0 +1,110 @@
+include mixins
+doctype
+html( lang="en" )
+	head
+		title Boxes
+		meta( charset='utf-8' )
+		meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+		meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+		meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+		//- Bootswatch Theme
+		link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
+		//- my theme
+		link(href="public/stylesheets/index.css", rel="stylesheet")
+
+	body(style="padding-bottom:10rem;")
+		.container
+ 
+		script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+		script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+
+nav.navbar.navbar-default( role="navigation" )
+	.navbar-header
+		button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
+			span.sr-only Toggle navigation
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+		a.navbar-brand(href="/") Extreme Saves
+ 
+	#navbar-inverse.collapse.navbar-collapse
+		ul.nav.navbar-nav
+			li.active: a( href="/") Home
+			li: a( href="#about" ) About
+			li: a( href="#contact" ) Contact
+			li.dropdown
+				a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Dropdown 
+					span.caret
+				ul.dropdown-menu( role="menu" )
+					li: a( href="#" ) Action
+					li: a( href="#" ) Another action
+					li: a( href="#" ) Something else here
+					li.divider
+					li.dropdown-header Nav header
+					li: a( href="#" ) Separated link
+					li: a( href="#" ) One more separated link
+
+//div.col
+//	.col-md-12.col-sm-6.col-xs-12
+//		+panel("Box 0", "success").center-block: a( href="editbox" ) Edit
+
+
+.col-md-8.col-sm-6.col-xs-12
+		div(id="currentpokemon" style="margin-top:20px;margin-left:10px;margin-right:10px")
+				center
+					img(src="http://vignette4.wikia.nocookie.net/nintendo/images/3/31/Red.png/revision/latest?cb=20111124132055&path-prefix=en" width="100" id="trainerimg" style="margin-bottom:20px;margin-top:-15px")
+					br
+				+panel("Customize your Trainer!")
+					.col-md-5.col-sm-6.col-xs-12
+						form(action='/choose_trainer_name', method='POST')
+							label(for="trainer_name",style='padding-right:5px') Name
+							input(id="trainer_name" type='text', name="trainer_name")
+						form(action='/choose_trainer_gender', method='POST')
+							label(for='trainer_gender', style='padding-right:5px') Gender
+							select(id="trainer_gender" onchange="chooseTrainerGender()") // will need to put the select inside a form in order to get data
+								- genders = ['Male', 'Female']
+								each gender, i in genders
+									option(value=i+1) #{gender}
+							script(src="/javascripts/extremesaves.js")
+						form(action='/choose_trainer_id', method='POST')
+							label(for="trainer_id",style='padding-right:5px') ID
+							input(id="trainer_id" type='text', name="trainer_id")
+						form(action='/choose_trainer_sid', method='POST')
+							label(for="trainer_sid",style='padding-right:5px') Secret ID
+							input(id="trainer_sid" type='text', name="trainer_sid")
+						form(action='/choose_trainer_startdate', method='POST')
+							label(for="trainer_startdate",style='padding-right:5px') Start Date
+							input(id="trainer_startdate" type='text', name="trainer_sid")
+		center
+			+button("primary", "#finishup") Finish
+			br
+			label(for="padding",style='padding-right:5px') 
+
+						
+div.col
+	.col-md-2.col-sm-5.col-xs-12
+		- for (var i = 1; i <= 16; i++) {
+			a(href="editbox")
+				+panel(i, "Box " + i, "info")
+		- }
+	.col-md-2.col-sm-5.col-xs-12
+		- for (var i = 17; i <= 32; i++) {
+			a(href="editbox")
+				+panel(i, "Box " + i, "info")
+		- }
+
+// Trainer
+// name - form (max 7 chars)
+// gender - checkbox
+// trainer id - form (max 6 numbers 00000 - 65535)
+// secret id - form (max 6 numbers 00000 - 65535)
+
+//+button("primary", "link.htm") Box 1
+//+button("primary", "link.htm") Box 2
+
+
+
+
+
+
+

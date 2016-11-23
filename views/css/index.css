@@ -1,0 +1,12 @@
+row {
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+#images {
+	width: 200%;
+	display: flex;
+  	align-items: center;
+	flex-wrap: wrap;
+  	justify-content: space-around;
+}

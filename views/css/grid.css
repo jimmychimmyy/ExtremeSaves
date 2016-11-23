@@ -1,0 +1,98 @@
+// IMPORTS --------------------------------------------------
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+
+
+// VARIABLES ------------------------------------------------
+// Change any of the variables in lower case.
+// Changing variable that are all uppercase may cause breakage.
+@gridBase      : 960;  // In Pixels
+@gutterWidth   : 15;   // In Pixels
+@maxColumns    : 12;
+@gridWidth     : 80%;
+@gridMaxWidth  : 1400px;
+
+// I would not mess with the below variable unless you are familiar with LESS
+@MAX_GUTTERS   : @maxColumns - 1;
+@LEFT_MARGIN   : ( @gutterWidth / @gridBase ) * 100%;
+@SINGLE_COLUMN : (( @gridBase  - ( @gutterWidth * @MAX_GUTTERS )) / @maxColumns );
+
+
+// MIXINS ---------------------------------------------------
+// This constructs the grid so you need it.
+.columns_gutters( @cols: 0, @gutters: 0 ) {
+  // BASE FORMULA
+  // ((( SINGLE COL WIDTH * NUM OF COLS ) + ( GUTTER WIDTH * NUM OF GUTTERS )) / GRID SIZE ) * 100
+  width: ((( @SINGLE_COLUMN * @cols ) + ( @gutterWidth * @gutters )) / @gridBase ) * 100%
+}
+
+// This just adjust the column colors. You do not need it.
+.rowColor( @percentage: 0%, @color: #000 ) {
+  background-color: darken( @color, @percentage );
+  border: 5px solid darken( @color, @percentage + -15 ); 
+}
+
+// LESS/CSS -------------------------------------------------
+
+* { box-sizing: border-box; }
+
+.container { 
+  width     : @gridWidth; 
+  max-width : @gridMaxWidth; 
+  margin    : 0 auto; 
+}
+
+// Not required styles
+body { margin: 0; font-family: 'Open Sans'; background: #eee; }
+
+h1, h3 { font-weight: 300; }
+
+h3 { margin-top: 0; }
+
+.shift-text { 
+  text-align: left !important; 
+  padding: 20px !important; 
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+// START GRID CONSTRUCTION ----------------------------------
+
+.row:before, .row:after {
+    content : "";
+    display : table;
+} 
+.row:after { clear: both; }
+
+.row { zoom: 1; } // For IE 6/7 (trigger hasLayout)
+
+// SUPER SELECTOR 
+// Set a class that will affect all class names that begin with "units-"
+// Required
+[class^="units-"] {
+  float       : left;            
+  margin-left : @LEFT_MARGIN; 
+  &:first-child { margin-left: 0; }
+}
+
+// Not requied; for display only
+[class^="units-"] {
+  color            : #FFF;        
+  margin-bottom    : @LEFT_MARGIN;
+  padding          : 10px 0;      
+  text-align       : center;
+} 
+
+// Use the .columns_gutters Mixin to calcualte the correct widths, 
+// The .rowColor Mixin is not required
+.units-1  { .columns_gutters( 1, 0 );   .rowColor( 0,  #FFA603 ); }  // 1  column,  0  gutters
+.units-2  { .columns_gutters( 2, 1 );   .rowColor( 10, #FFA603 ); }  // 2  columns, 1  gutter
+.units-3  { .columns_gutters( 3, 2 );   .rowColor( 15, #900    ); }  // 3  columns, 2  gutters
+.units-4  { .columns_gutters( 4, 3 );   .rowColor( 20, #5AE    ); }  // 4  columns, 3  gutters
+.units-5  { .columns_gutters( 5, 4 );   .rowColor( 25, #A55    ); }  // 5  columns, 4  gutters
+.units-6  { .columns_gutters( 6, 5 );   .rowColor( 0,  #000    ); }  // 6  columns, 5  gutters
+.units-7  { .columns_gutters( 7, 6 );   .rowColor( 10, #B44    ); }  // 7  columns, 6  gutters
+.units-8  { .columns_gutters( 8, 7 );   .rowColor( 15, #22D    ); }  // 8  columns, 7  gutters
+.units-9  { .columns_gutters( 9, 8 );   .rowColor( 20, #19F    ); }  // 9  columns, 8  gutters
+.units-10 { .columns_gutters( 10, 9 );  .rowColor( 25, #99C    ); }  // 10 columns, 9  gutters
+.units-11 { .columns_gutters( 11, 10 ); .rowColor( 20, #909    ); }  // 11 columns, 10 gutters
+.units-12 { .columns_gutters( 12, 11 ); .rowColor( 25, #909    ); }  // 12 columns, 11 gutters

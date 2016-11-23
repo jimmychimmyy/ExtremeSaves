@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1.
+        Move List
+    ul
+        each move, i in moves
+            li
+                a(href="mailto:#{move.linktomove}")= move.Name
