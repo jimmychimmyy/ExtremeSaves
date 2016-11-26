@@ -25,7 +25,30 @@ function checkMaxLv() {
 	}
 }
 
-/* */
+/* checks the pokemon's max happiness */
+function checkMaxHappy() {
+	var happy = document.getElementById('pokemon_happy');
+	if (happy.value > 255) {
+		happy.value = 255;
+	} else if (happy.value < 0) {
+		happy.value = 0;
+	} else {
+		happy.value = happy.value;
+	}
+}
+
+function sayingHello() {
+	console.log("Hello");
+}
+
+function testDatabase() {
+	var request = $.ajax({url: '/getbulbasaur', type: 'GET'});
+	request.done(function(msg) {
+		console.log(msg);
+	});
+}
+
+/* TODO makes sure input for pokemon name is under  */
 
 function sayHi() {
 	console.log("extreme saves!!!!");

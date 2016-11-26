@@ -23,6 +23,16 @@ router.get('/userlist', function(req, res) {
     });
 });
 
+router.get('/getbulbasaur', function(req, res) {
+    var db = req.db;
+    var pokedex = db.get('pokedex');
+    pokedex.find({"Ndex" : "#001"}, {}, function(e, docs) {
+        if (e) return;
+        res.send(JSON.stringify(docs));
+    });
+    //res.send("indexjs saying hello");
+});
+
 /* GET pokedex page */
 router.get('/pokedex', function(req, res) {
     var db = req.db;
@@ -32,6 +42,7 @@ router.get('/pokedex', function(req, res) {
             "pokedex" : docs
         });
     });
+    res.send("pokedex saying hello");
 });
 
 /* GET moves page */
@@ -71,12 +82,18 @@ router.get('/editbox', function(req, res) {
     }
 });
 
-function sayHello() {
+function sayHelloIndex() {
     console.log("Hello");
 }
 
-router.post('/choose_pokemon_type', function(req, res) {
-    console.log("choosing pokemon type");
+router.post('/choose_pokemon_species', function(req, res) {
+    var db = req.db;
+    var data = req.body;
+    var pokedex = db.get('pokedex');
+    pokedex.find({'Ndex': "#001"}, {}, function(e, docs) {
+        if (err) return;
+        res.send(docs);
+    });
 });
 
 /* GET boxes page */
@@ -101,6 +118,15 @@ router.get('/getpokemon', function(req, res) {
             res.send(docs); // need to check the format of docs to see if it returns a single pokedex object
         }
     });
+});
+
+function sayHelloIn() {
+    console.log("sayHello")
+}
+
+/* POST function that says hello */
+router.get('/sayhello', function(req, res) {
+    console.log("hello");
 });
 
 /* POST to add a single trainer to savefile */

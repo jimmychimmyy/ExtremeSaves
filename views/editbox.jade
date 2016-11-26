@@ -10,7 +10,7 @@ html( lang="en" )
 		//- Bootswatch Theme
 		link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
 		//- my theme
-		//link(href="public/stylesheets/index.css", rel="stylesheet")
+		link(href="stylesheets/index.css", rel="stylesheet")
 
 	body(style="padding-bottom:10rem;")
 		.container
@@ -111,13 +111,13 @@ div.col
 							script(src="/javascripts/extremesaves.js")
 						form(action='/choose_pokemon_nickname', method='POST')
 							label(for="pokemon_nickname",style='padding-right:5px') Nickname
-							input(id="pokemon_nickname" type='text', name="nickname")
+							input(id="pokemon_nickname" type='text', name="nickname" maxlength="12")
 						form(action='/choose_pokemon_lv', method='POST')
 							label(for='pokemon_lv', style='padding-right:5px') LV
-							input(id="pokemon_lv" type='text', name="lv")
+							input(id="pokemon_lv" type='text', name="lv", onChange='checkMaxLv()')
 						form(action='/choose_pokemon_happy', method='POST')
 							label(for='pokemon_happy', style='padding-right:5px') Happiness
-							input(id="pokemon_happy" type='text', name="happy")
+							input(id="pokemon_happy" type='text', name="happy" onChange='checkMaxHappy()')
 						form(action='/choose_pokemon_shiny', method='POST')
 							label(for='pokemon_shiny', style='padding-right:5px') Shiny
 							input(id='pokemon_shiny', type='checkbox', value='Shiny', name="Shiny")
@@ -158,7 +158,7 @@ div.col
 							input(id="pokemon_met_lv" type='text', name="metlv")
 						form(action='/choose_met_date', method='POST')
 							label(for="pokemon_met_date",style='padding-right:5px') Met Date
-							input(id="pokemon_met_date" type='text', name="metdate")
+							input(id="pokemon_met_date" type='date', name="metdate")
 						form(action='/choose_pokemon_met_location', method='POST')
 							label(for='pokemon_met_location', style='padding-right:5px') Met Location
 							select(id="pokemon_met_location")
