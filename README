@@ -1,3 +1,11 @@
 to start db use mongod --dbpath ~/path/to/pokemon/data
 
 to start server use npm start
+
+TODO
+- make input fields (such as lv) accept only numbers
+- fill database (abilities, moves, met locations, games, pokeball, items)
+- generate save file
+- update save file every time a pokemon is edited (save changes is clicked inside editbox)
+- trainer information needs to save (when update trainer is clicked)
+- need to load save file into edit box and home page/trainer info)

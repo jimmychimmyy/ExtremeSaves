@@ -48,6 +48,11 @@ function testDatabase() {
 	});
 }
 
+/* request server to update trainer data */
+function updateTrainer() {
+	console.log("updateTrainer called");
+}
+
 /* TODO makes sure input for pokemon name is under  */
 
 function sayHi() {
