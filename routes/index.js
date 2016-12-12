@@ -33,6 +33,31 @@ router.get('/getbulbasaur', function(req, res) {
     //res.send("indexjs saying hello");
 });
 
+router.get('/getfile', function(req, res) {
+    var fs = require('fs');
+     //TODO keep changing file to keep readings
+    /*fs.readFile('.txt', function(e, data) {
+        if (e) {
+            console.log(e);
+        }
+        var str = new String(data);
+        var res = str.split("\n");
+
+        var db = req.db;
+        var abilities = db.get('');
+        for (var i = 0; i < res.length; i++) {
+            abilities.insert({"_id":i+1, "name": res[i]}, function(e, result) {
+                if (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        //res.send(data);
+    }); */
+    res.send("done");
+});
+
 /* GET pokedex page */
 router.get('/pokedex', function(req, res) {
     var db = req.db;

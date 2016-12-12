@@ -53,6 +53,15 @@ function updateTrainer() {
 	console.log("updateTrainer called");
 }
 
+function readFile() {
+	var request = $.ajax({url: '/getfile', type: 'GET'});
+	request.done(function(msg) {
+		console.log(msg);
+		console.log(msg.split(/\r\n|\r|\n/).length)
+	});
+
+}
+
 /* TODO makes sure input for pokemon name is under  */
 
 function sayHi() {
