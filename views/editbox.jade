@@ -112,7 +112,9 @@ center
 
 					center
 						label(for="padding",style='padding-top:-120px') 
-							+button("primary", "@savepokemonedit") Save Changes
+							script(src="/javascripts/extremesaves.js")
+							script.
+							button("primary", "javascript:void(0)" onclick="saveSlot()") Save Changes
 							br
 							label(for="padding",style='padding-top:-120px')
 

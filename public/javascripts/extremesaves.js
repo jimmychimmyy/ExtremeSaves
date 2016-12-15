@@ -28,25 +28,30 @@ function selectPokemonInBox(index) {
 	}
 }
 
+/* udpates selected pokemon img */
+function selectSelectedSpecies() {
+
+}
+
 /* call server to save slot change */
 function saveSlot() {
 	// grab every element of the pokemon
-	var species = document.getElementById('pokemon_type');
-	var nickname = document.getElementById('pokemon_nickname');
-	var level = document.getElementById('pokemon_lv');
-	var happy = document.getElementById('pokemon_happy');
-	var shiny = document.getElementById('pokemon_shiny');
-	var nature = document.getElementById('pokemon_nature');
-	var ability = document.getElementById('pokemon_ability');
-	var moveA = document.getElementById('pokemon_move_a');
-	var moveB = document.getElementById('pokemon_move_b');
-	var moveC = document.getElementById('pokemon_move_c');
-	var moveD = document.getElementById('pokemon_move_d');
-	var metLevel = document.getElementById('pokemon_met_lv');
-	var metDate = document.getElementById('pokemon_met_date');
-	var metLocation = document.getElementById('pokemon_met_location');
-	var pokeball = document.getElementById('pokemon_pokeball');
-	var gameOrigin = document.getElementById('pokemon_game');
+	var species = document.getElementById('pokemon_type').value;
+	var nickname = document.getElementById('pokemon_nickname').value;
+	var level = document.getElementById('pokemon_lv').value;
+	var happy = document.getElementById('pokemon_happy').value;
+	var shiny = document.getElementById('pokemon_shiny').checked;
+	var nature = document.getElementById('pokemon_nature').value;
+	var ability = document.getElementById('pokemon_ability').value;
+	var moveA = document.getElementById('pokemon_move_a').value;
+	var moveB = document.getElementById('pokemon_move_b').value;
+	var moveC = document.getElementById('pokemon_move_c').value;
+	var moveD = document.getElementById('pokemon_move_d').value;
+	var metLevel = document.getElementById('pokemon_met_lv').value;
+	var metDate = document.getElementById('pokemon_met_date').value;
+	var metLocation = document.getElementById('pokemon_met_location').value;
+	var pokeball = document.getElementById('pokemon_pokeball').value;
+	var gameOrigin = document.getElementById('pokemon_game').value;
 
 	// create JSON object
 	var str = "{ species:" + species
@@ -56,7 +61,7 @@ function saveSlot() {
 	+ ", shiny:" + shiny
 	+ ", nature: " + nature
 	+ ", ability:" + ability
-	+ ", moves: ['" + moveA + "','" + moveB + "','" moveC + "','" + moveD + "']"
+	+ ", moves: ['" + moveA + "','" + moveB + "','" +  moveC + "','" + moveD + "']"
 	+ ", metLevel:" + metLevel
 	+ ", metDate:" + metDate
 	+ ", metLocation:" + metLocation
@@ -64,11 +69,13 @@ function saveSlot() {
 	+ ", gameOrigin:" + gameOrigin + " }";
 
 	// send POST request to server to save into db
-	var jsonObj = JSON.stringify(eval("(" + str + ")"));
+	var jsonObj = JSON.stringify(str);
+	/*
 	var request = $.ajax({url: '/saveslot', type: 'POST'});
 	request.done(function(msg) {
 		console.log(msg);
-	});
+	});*/
+	console.log(jsonObj);
 }
 
 /* call server to save trainer change */
