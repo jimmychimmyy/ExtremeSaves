@@ -23,6 +23,7 @@ router.get('/userlist', function(req, res) {
     });
 });
 
+/* function to test server client connection */
 router.get('/getbulbasaur', function(req, res) {
     var db = req.db;
     var pokedex = db.get('pokedex');
@@ -33,6 +34,47 @@ router.get('/getbulbasaur', function(req, res) {
     //res.send("indexjs saying hello");
 });
 
+/* function to save edited slot */
+router.post('/saveslot', function(req, res) {
+    var db = req.db;
+    var savefiles = db.get('savefiles');
+    savefiles.find({}, {}, function(e, docs) { // TODO find the user's savefile then update pokemon based on slot number
+        if (e) return;
+
+    });
+});
+
+/* function to save edited trainer */
+router.post('/savetrainer', function(req, res) {
+
+});
+
+/* function to load current slot */
+router.post('/getpokemonatslot', function(req, res) {
+
+});
+
+/* fnction to load trainer info */
+router.post('/gettrainer', function(req, res) {
+
+});
+
+/* function to create default savefile */
+router.post('/startcustomizing', function(req, res) {
+    var db = req.db;
+    var data = req.body;
+    var savefiles = db.get('savefiles');
+    savefiles.find({'email':data.email}, {}, function(e, docs) {
+        if (e) {
+            // it doesnt exist, create a new entry
+        } else {
+            // it does exist, ask user if they want to preload their old save file or start new
+        }
+    });
+});
+
+/* function used to update db */
+/* DELETE THIS BEFORE PRODUCTION */
 router.get('/getfile', function(req, res) {
     var fs = require('fs');
      //TODO keep changing file to keep readings

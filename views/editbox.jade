@@ -147,7 +147,7 @@ center
 								label(for='pokemon_nature', style='padding-right:5px') Nature
 								select(id="pokemon_nature")
 									each nature, i in natures
-										option(value=nature.type) #{nature.type}
+										option(value=i+1) #{nature.name}
 
 							form(action='/choose_pokemon_ability', method='POST')
 								label(for='pokemon_ability', style='padding-right:5px') Ability

@@ -12,6 +12,37 @@ function chooseTrainerGender() {
 	}
 }
 
+/* calls server to create default savefile for user */
+function startCustomizing() {
+	//var email = document.getElementById(); // TODO need to start by getting user email
+
+	// POST request with email
+	var request = $.ajax({url: '/startcustomizing', type: 'POST'});
+	request.done(function(msg) {
+		console.log(msg);
+		// when ready, take user to edit trainer view
+	});
+}
+
+/* sets global defaults for all pokemon */
+function setDefaultPokemon() {
+	// each pokemon starts at lv 100
+	// by default met level is 100?
+	// its four moves are the last four that it learns leveling up
+	// by default its shiny
+	// by default all pokeball
+}
+
+/* sets level globally for all pokemon */
+function setGlobalLevel() {
+
+}
+
+/* sets shiny globally for all pokemon */
+function setGlobalShiny() {
+
+}
+
 /* Highlights the clicked box inside editbox.jade */
 /* MAY NOT BE WORKING PROPERLY ANYMORE */
 function selectPokemonInBox(index) {
@@ -33,6 +64,41 @@ function selectSelectedSpecies() {
 
 }
 
+/* call server to load info about the currently selected slot */
+function selectSlot() {
+	// find its absolute slot position
+	//var boxNum = document.getElementById();
+	//var slotNum = document.getElementById();
+	var absSlot = (boxNum*30) + slotNum;
+
+	// create json string
+	var str = "{ absSlot:" + absSlot + " }";
+	var jsonObj = JSON.stringify(str);
+
+	// POST request
+	var request = $.ajax({url: '/getpokemonatslot', type: 'POST'});
+	request.done(function(msg) {
+		console.log(msg);
+		// load the pokemon into current pokemon
+	});
+}
+
+/* call server to load info about the current trainer */
+function loadTrainer() {
+	//var email = document.getElementById(); // TODO need to have user input email before starting
+
+	// create json string
+	var str = "{ email:" + email + " }";
+	var jsonObj = JSON.stringify(str);
+
+	// POST request
+	var request = $.ajax({url: '/getpokemonatslot', type: 'POST'});
+	request.done(function(msg) {
+		console.log(msg);
+		// load trainer info into view
+	});
+}
+
 /* call server to save slot change */
 function saveSlot() {
 	// grab every element of the pokemon
@@ -52,6 +118,9 @@ function saveSlot() {
 	var metLocation = document.getElementById('pokemon_met_location').value;
 	var pokeball = document.getElementById('pokemon_pokeball').value;
 	var gameOrigin = document.getElementById('pokemon_game').value;
+
+	//var slotNum = document.getElementById('')
+	//var email = document.getElementById();
 
 	// create JSON object
 	var str = "{ species:" + species
@@ -81,11 +150,13 @@ function saveSlot() {
 /* call server to save trainer change */
 function saveTrainer() {
 	// grab every element of the trainer
-	var name = document.getElementById('trainer_name');
-	var gender = document.getElementById('trainer_gender');
-	var pid = document.getElementById('trainer_id');
-	var sid = document.getElementById('trainer_sid');
-	var startDate = document.getElementById('trainer_startdate');
+	var name = document.getElementById('trainer_name').value;
+	var gender = document.getElementById('trainer_gender').checked;
+	var pid = document.getElementById('trainer_id').value;
+	var sid = document.getElementById('trainer_sid').value;
+	var startDate = document.getElementById('trainer_startdate').value;
+
+	//var email = document.getElementById();
 
 	// create JSON object
 	var str = "{ name:" + name
@@ -95,7 +166,7 @@ function saveTrainer() {
 	+ ", startDate:" + startDate + " }";
 
 	// send POST request to server to save into db
-	var jsonObj = JSON.stringify(eval("(" + str + ")"));
+	var jsonObj = JSON.stringify(str);
 	var request = $.ajax({url: '/savetrainer', type: 'POST'});
 	request.done(function(msg) {
 		console.log(msg);
@@ -182,7 +253,7 @@ function submit() {
 	}
 }
 
-/*
+/* function to test changing current slot's image */
 function sayHello() {
 	var select = document.getElementById('pokemon_type');
 	var opt = select.options[select.selectedIndex].value;
@@ -196,7 +267,7 @@ function sayHello() {
 	if (opt == 1) {
 		var img = document.getElementById('currentpokemonimg').src = "http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758";
 	}
-} */
+}
 
 /* TODO makes sure input for pokemon name is under  */
 /*
