@@ -86,6 +86,8 @@ router.get('/editbox', function(req, res) {
     var db = req.db;
     var pokedex = null;
     var natures = null;
+    var moves = null;
+    var abilities = null;
 
     db.get('pokedex').find({}, {}, function(e, docs) {
         pokedex = docs;
@@ -97,11 +99,23 @@ router.get('/editbox', function(req, res) {
         render();
     });
 
+    db.get('moves').find({}, {}, function(e, docs) {
+        moves = docs;
+        render();
+    });
+
+    db.get('abilities').find({}, {}, function(e, docs) {
+        abilities = docs;
+        render();
+    });
+
     function render() {
-        if (pokedex != null && natures != null) {
+        if (pokedex != null && natures != null && moves != null && abilities !=null) {
             res.render('editbox', {
                 "pokedex" : pokedex,
-                "natures" : natures
+                "natures" : natures,
+                "moves" : moves,
+                "abilities" : abilities
             });
         }
     }
