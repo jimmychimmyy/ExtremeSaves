@@ -18,7 +18,7 @@ html( lang="en" )
 		script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
 		script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
 
-nav.navbar.navbar-default( role="navigation" )
+nav.navbar.navbar-default(role="navigation")
 	.navbar-header
 		button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
 			span.sr-only Toggle navigation
@@ -29,10 +29,10 @@ nav.navbar.navbar-default( role="navigation" )
  
 	#navbar-inverse.collapse.navbar-collapse
 		ul.nav.navbar-nav
-			li.active: a( href="/") Home
-			li: a( href="#about" ) About
-			li: a( href="#contact" ) Contact
-			li.dropdown
+			//li.active: a( href="/") Home
+			//li: a( href="#about" ) About
+			//li: a( href="#contact" ) Contact
+			//li.dropdown
 				a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Dropdown 
 					span.caret
 				ul.dropdown-menu( role="menu" )
@@ -85,8 +85,6 @@ nav.navbar.navbar-default( role="navigation" )
 			button("primary", "javascript:void(0)" onclick="testDatabase()") Finish
 			br
 			label(for="padding",style='padding-right:5px') 
-
-						
 div.col
 	.col-md-2.col-sm-5.col-xs-12
 		- for (var i = 1; i <= 16; i++) {

@@ -12,13 +12,31 @@ html( lang="en" )
 		//- my theme
 		link(href="stylesheets/index.css", rel="stylesheet")
 
+		style.
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: seperate;
+				align: center;
+				width: 80%;
+				border: 1px solid #000000;
+			}
+			td, th {
+				border: 1px solid #000000;
+				text-align: left;
+				padding: 8px;
+			}
+			tr:nth-child(even) {
+				background-color: #dddddd;
+				border: 1px solid #000000;
+			}
+
 	body(style="padding-bottom:10rem;")
 		.container
  
 		script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
 		script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
 
-nav.navbar.navbar-default( role="navigation" )
+nav.navbar.navbar-default( role="navigation")
 	.navbar-header
 		button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
 			span.sr-only Toggle navigation
@@ -29,10 +47,10 @@ nav.navbar.navbar-default( role="navigation" )
  
 	#navbar-inverse.collapse.navbar-collapse
 		ul.nav.navbar-nav
-			li.active: a( href="/") Home
-			li: a( href="#about" ) About
-			li: a( href="#contact" ) Contact
-			li.dropdown
+			//li.active: a( href="/") Home
+			//li: a( href="#about" ) About
+			//li: a( href="#contact" ) Contact
+			//li.dropdown
 				a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Dropdown 
 					span.caret
 				ul.dropdown-menu( role="menu" )
@@ -44,136 +62,133 @@ nav.navbar.navbar-default( role="navigation" )
 					li: a( href="#" ) Separated link
 					li: a( href="#" ) One more separated link
 
-
-
-div.col
-	.col-md-5.col-sm-6.col-xs-16		
-		div(id="images" style="margin-left:5px;margin-right:5px")
-			center
-				.col-md-2.col-sm-2.col-xs-2
-					- for (var i = 1; i <= 5; i++) { //a(href="#{i}")
-						a(href="#select#{i}" onclick="selectPokemonInBox(#{i})")
-							+panel(i, "")
-								img(src="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px")
-					- }
-					script(src="/javascripts/extremesaves.js")
-					script.
-						setDefault()
-				.col-md-2.col-sm-2.col-xs-2
-					- for (var i = 6; i <= 10; i++) {
-						a(href="#selectThisPokemon" onclick="selectPokemonInBox(#{i})")
-							+panel(i, "")
-								img(src="http://vignette2.wikia.nocookie.net/pokemon/images/c/c7/006Charizard_Dream.png/revision/latest?cb=20131213083306" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px")
-					- }
-				.col-md-2.col-sm-2.col-xs-2
-					- for (var i = 11; i <= 15; i++) {
-						a(href="#selectThisPokemon" onclick="selectPokemonInBox(#{i})")
-							+panel(i, "")
-								img(src="http://vignette2.wikia.nocookie.net/pokemon/images/2/21/008Wartortle_Dream.png/revision/latest?cb=20140916191729" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px")
-					- }
-				.col-md-2.col-sm-2.col-xs-2
-					- for (var i = 16; i <= 20; i++) {
-						a(href="#selectThisPokemon" onclick="selectPokemonInBox(#{i})")
-							+panel(i, "")
-								img(src="http://vignette3.wikia.nocookie.net/fanfiction/images/4/44/448Lucario_Dream.png/revision/latest?cb=20101024223615" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px")
-					- }
-				.col-md-2.col-sm-2.col-xs-2
-					- for (var i = 21; i <= 25; i++) {
-						a(href="#selectThisPokemon" onclick="selectPokemonInBox(#{i})")
-							+panel(i, "")
-								img(src="http://vignette1.wikia.nocookie.net/es.pokemon/images/2/2f/Mewtwo_(dream_world).png/revision/latest?cb=20101023011432" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px")
-					- }
-				.col-md-2.col-sm-2.col-xs-2
-					- for (var i = 26; i <= 30; i++) {
-						a(href="#selectThisPokemon" onclick="selectPokemonInBox(#{i})")
-							+panel(i, "")
-								img(src="http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px")
-					- } // +panel(i, "success") instead of img
-			center
-				.center-block: a( href="/", style="margin-bottom:50px") Return to edit trainer and select a different box
-
-	.col-md-7.col-sm-6.col-xs-12
-		div(id="currentpokemon" style="margin-top:25px;margin-left:10px;margin-right:10px")
-				center
-					img(src="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758" width="200" id="currentpokemonimg" style="margin-bottom:15px;margin-top:-15px")
+.col-md-12.col-sm-6.col-xs-12
+	center
+		br
+		.center-block: a( href="/", style="margin-bottom:50px") Return to edit trainer and select a different box
+br
+br
+center
+	br
+	table#cameras(style="margin-left:25px;margin-right:25px")
+		thead
+		tbody
+			- for (var i = 1; i <= 6; i++) { //a(href="#{i}")
+				td
 					center
-					label(for="padding",style='padding-top:-120px') 
-						+button("primary", "@savepokemonedit") Save Changes
-						br
+						img(src="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px;width:inherit")
+			- }
+		tbody
+			- for (var i = 1; i <= 6; i++) { //a(href="#{i}")
+				td
+					center
+						img(src="http://vignette2.wikia.nocookie.net/pokemon/images/c/c7/006Charizard_Dream.png/revision/latest?cb=20131213083306" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px;width:inherit")
+			- }
+		tbody
+			- for (var i = 1; i <= 6; i++) { //a(href="#{i}")
+				td
+					center
+						img(src="http://vignette2.wikia.nocookie.net/pokemon/images/2/21/008Wartortle_Dream.png/revision/latest?cb=20140916191729" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px;width:inherit")
+			- }
+		tbody
+			- for (var i = 1; i <= 6; i++) { //a(href="#{i}")
+				td
+					center
+						img(src="http://vignette3.wikia.nocookie.net/fanfiction/images/4/44/448Lucario_Dream.png/revision/latest?cb=20101024223615" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px;width:inherit")
+			- }
+		tbody
+			- for (var i = 1; i <= 6; i++) { //a(href="#{i}")
+				td
+					center
+						img(src="http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035" width="35px" height="35px" id="currentslotimg#{i}" style="margin-left:-7px;width:inherit")
+			- }
+
+
+	.col-md-10.col-sm-6.col-xs-12
+	center
+			div(id="currentpokemon" style="margin-top:25px;margin-left:10px;margin-right:10px")
+					center
+						img(src="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758" width="200" id="currentpokemonimg" style="margin-bottom:15px;margin-top:-15px")
+					center
 						label(for="padding",style='padding-top:-120px') 
-				+panel("Customize your Pokémon!")
-					.col-md-4.col-sm-6.col-xs-12
-						form(action='/choose_pokemon_type', method='POST')
-							label(for='pokemon_type', style='padding-right:5px') Pokemon
-							select(id="pokemon_type" onchange="sayHello()") // will need to put the select inside a form in order to get data
-								each pokemon, i in pokedex
-									option(value=i+1) #{pokemon.Pokémon}
-							script(src="/javascripts/extremesaves.js")
-						form(action='/choose_pokemon_nickname', method='POST')
-							label(for="pokemon_nickname",style='padding-right:5px') Nickname
-							input(id="pokemon_nickname" type='text', name="nickname" maxlength="12")
-						form(action='/choose_pokemon_lv', method='POST')
-							label(for='pokemon_lv', style='padding-right:5px') LV
-							input(id="pokemon_lv" type='text', name="lv", onChange='checkMaxLv()')
-						form(action='/choose_pokemon_happy', method='POST')
-							label(for='pokemon_happy', style='padding-right:5px') Happiness
-							input(id="pokemon_happy" type='text', name="happy" onChange='checkMaxHappy()')
-						form(action='/choose_pokemon_shiny', method='POST')
-							label(for='pokemon_shiny', style='padding-right:5px') Shiny
-							input(id='pokemon_shiny', type='checkbox', value='Shiny', name="Shiny")
-						form(action='/choose_pokemon_nature', method='POST')
-							label(for='pokemon_nature', style='padding-right:5px') Nature
-							select(id="pokemon_nature")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-						form(action='/choose_pokemon_ability', method='POST')
-							label(for='pokemon_move_ability', style='padding-right:5px') Ability
-							select(id="pokemon_move_ability")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-					.col-md-3.col-sm-6.col-xs-12
-						form(action='/choose_pokemon_move_a', method='POST')
-							label(for='pokemon_move_a', style='padding-right:5px') Move 1
-							select(id="pokemon_move_a")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-						form(action='/choose_pokemon_move_b', method='POST')
-							label(for='pokemon_move_b', style='padding-right:5px') Move 2
-							select(id="pokemon_move_b")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-						form(action='/choose_pokemon_move_c', method='POST')
-							label(for='pokemon_move_c', style='padding-right:5px') Move 3
-							select(id="pokemon_move_c")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-						form(action='/choose_pokemon_move_d', method='POST')
-							label(for='pokemon_move_d', style='padding-right:5px') Move 4
-							select(id="pokemon_move_d")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-					.col-md-3.col-sm-6.col-xs-12
-						form(action='/choose_pokemon_met_lv', method='POST')
-							label(for='pokemon_met_lv', style='padding-right:5px') Met Level
-							input(id="pokemon_met_lv" type='text', name="metlv")
-						form(action='/choose_met_date', method='POST')
-							label(for="pokemon_met_date",style='padding-right:5px') Met Date
-							input(id="pokemon_met_date" type='date', name="metdate")
-						form(action='/choose_pokemon_met_location', method='POST')
-							label(for='pokemon_met_location', style='padding-right:5px') Met Location
-							select(id="pokemon_met_location")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-						form(action='/choose_pokemon_pokemon', method='POST')
-							label(for='pokemon_pokeball', style='padding-right:5px') Pokeball
-							select(id="pokemon_pokeball")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
-						form(action='/choose_pokemon_game', method='POST')
-							label(for='pokemon_game', style='padding-right:5px') Game of Origin
-							select(id="pokemon_game")
-								each nature, i in natures
-									option(value=nature.type) #{nature.type}
+							+button("primary", "@savepokemonedit") Save Changes
+							br
+							label(for="padding",style='padding-top:-120px') 
+					+panel("Customize your Pokémon!")
+						.col-md-5.col-sm-6.col-xs-12
+							form(action='/choose_pokemon_type', method='POST')
+								label(for='pokemon_type', style='padding-right:5px') Pokemon
+								select(id="pokemon_type" onchange="sayHello()") // will need to put the select inside a form in order to get data
+									each pokemon, i in pokedex
+										option(value=i+1) #{pokemon.name}
+								script(src="/javascripts/extremesaves.js")
+							form(action='/choose_pokemon_nickname', method='POST')
+								label(for="pokemon_nickname",style='padding-right:5px') Nickname
+								input(id="pokemon_nickname" type='text', name="nickname" maxlength="12")
+							form(action='/choose_pokemon_lv', method='POST')
+								label(for='pokemon_lv', style='padding-right:5px') LV
+								input(id="pokemon_lv" type='text', name="lv", onChange='checkMaxLv()')
+							form(action='/choose_pokemon_happy', method='POST')
+								label(for='pokemon_happy', style='padding-right:5px') Happiness
+								input(id="pokemon_happy" type='text', name="happy" onChange='checkMaxHappy()')
+							form(action='/choose_pokemon_shiny', method='POST')
+								label(for='pokemon_shiny', style='padding-right:5px') Shiny
+								input(id='pokemon_shiny', type='checkbox', value='Shiny', name="Shiny")
+							form(action='/choose_pokemon_nature', method='POST')
+								label(for='pokemon_nature', style='padding-right:5px') Nature
+								select(id="pokemon_nature")
+									each nature, i in natures
+										option(value=nature.type) #{nature.type}
+							form(action='/choose_pokemon_ability', method='POST')
+								label(for='pokemon_move_ability', style='padding-right:5px') Ability
+								select(id="pokemon_move_ability")
+									each ability, i in abilities
+										option(value=i+1) #{ability.name}
+						.col-md-3.col-sm-6.col-xs-12
+							form(action='/choose_pokemon_move_a', method='POST')
+								label(for='pokemon_move_a', style='padding-right:5px') Move 1
+								select(id="pokemon_move_a")
+									each move, i in moves
+										option(value=i+1) #{move.name}
+							form(action='/choose_pokemon_move_b', method='POST')
+								label(for='pokemon_move_b', style='padding-right:5px') Move 2
+								select(id="pokemon_move_b")
+									each move, i in moves
+										option(value=i+1) #{move.name}
+							form(action='/choose_pokemon_move_c', method='POST')
+								label(for='pokemon_move_c', style='padding-right:5px') Move 3
+								select(id="pokemon_move_c")
+									each move, i in moves
+										option(value=i+1) #{move.name}
+							form(action='/choose_pokemon_move_d', method='POST')
+								label(for='pokemon_move_d', style='padding-right:5px') Move 4
+								select(id="pokemon_move_d")
+									each move, i in moves
+										option(value=i+1) #{move.name}
+						.col-md-3.col-sm-6.col-xs-12
+							form(action='/choose_pokemon_met_lv', method='POST')
+								label(for='pokemon_met_lv', style='padding-right:5px') Met Level
+								input(id="pokemon_met_lv" type='text', name="metlv")
+							form(action='/choose_met_date', method='POST')
+								label(for="pokemon_met_date",style='padding-right:5px') Met Date
+								input(id="pokemon_met_date" type='date', name="metdate")
+							form(action='/choose_pokemon_met_location', method='POST')
+								label(for='pokemon_met_location', style='padding-right:5px') Met Location
+								select(id="pokemon_met_location")
+									each nature, i in natures
+										option(value=nature.type) #{nature.type}
+							form(action='/choose_pokemon_pokemon', method='POST')
+								label(for='pokemon_pokeball', style='padding-right:5px') Pokeball
+								select(id="pokemon_pokeball")
+									each nature, i in natures
+										option(value=nature.type) #{nature.type}
+							form(action='/choose_pokemon_game', method='POST')
+								label(for='pokemon_game', style='padding-right:5px') Game of Origin
+								select(id="pokemon_game")
+									each nature, i in natures
+										option(value=nature.type) #{nature.type}
+
+
 						
 
 				
