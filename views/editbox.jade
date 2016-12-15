@@ -109,11 +109,13 @@ center
 			div(id="currentpokemon" style="margin-top:25px;margin-left:10px;margin-right:10px")
 					center
 						img(src="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758" width="200" id="currentpokemonimg" style="margin-bottom:15px;margin-top:-15px")
+
 					center
 						label(for="padding",style='padding-top:-120px') 
 							+button("primary", "@savepokemonedit") Save Changes
 							br
-							label(for="padding",style='padding-top:-120px') 
+							label(for="padding",style='padding-top:-120px')
+
 					+panel("Customize your Pokémon!")
 						.col-md-5.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_type', method='POST')
@@ -122,66 +124,81 @@ center
 									each pokemon, i in pokedex
 										option(value=i+1) #{pokemon.name}
 								script(src="/javascripts/extremesaves.js")
+
 							form(action='/choose_pokemon_nickname', method='POST')
 								label(for="pokemon_nickname",style='padding-right:5px') Nickname
 								input(id="pokemon_nickname" type='text', name="nickname" maxlength="12")
+
 							form(action='/choose_pokemon_lv', method='POST')
 								label(for='pokemon_lv', style='padding-right:5px') LV
 								input(id="pokemon_lv" type='text', name="lv", onChange='checkMaxLv()')
+
 							form(action='/choose_pokemon_happy', method='POST')
 								label(for='pokemon_happy', style='padding-right:5px') Happiness
 								input(id="pokemon_happy" type='text', name="happy" onChange='checkMaxHappy()')
+
 							form(action='/choose_pokemon_shiny', method='POST')
 								label(for='pokemon_shiny', style='padding-right:5px') Shiny
 								input(id='pokemon_shiny', type='checkbox', value='Shiny', name="Shiny")
+
 							form(action='/choose_pokemon_nature', method='POST')
 								label(for='pokemon_nature', style='padding-right:5px') Nature
 								select(id="pokemon_nature")
 									each nature, i in natures
 										option(value=nature.type) #{nature.type}
+
 							form(action='/choose_pokemon_ability', method='POST')
-								label(for='pokemon_move_ability', style='padding-right:5px') Ability
-								select(id="pokemon_move_ability")
+								label(for='pokemon_ability', style='padding-right:5px') Ability
+								select(id="pokemon_ability")
 									each ability, i in abilities
 										option(value=i+1) #{ability.name}
+
 						.col-md-3.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_move_a', method='POST')
 								label(for='pokemon_move_a', style='padding-right:5px') Move 1
 								select(id="pokemon_move_a")
 									each move, i in moves
 										option(value=i+1) #{move.name}
+
 							form(action='/choose_pokemon_move_b', method='POST')
 								label(for='pokemon_move_b', style='padding-right:5px') Move 2
 								select(id="pokemon_move_b")
 									each move, i in moves
 										option(value=i+1) #{move.name}
+
 							form(action='/choose_pokemon_move_c', method='POST')
 								label(for='pokemon_move_c', style='padding-right:5px') Move 3
 								select(id="pokemon_move_c")
 									each move, i in moves
 										option(value=i+1) #{move.name}
+
 							form(action='/choose_pokemon_move_d', method='POST')
 								label(for='pokemon_move_d', style='padding-right:5px') Move 4
 								select(id="pokemon_move_d")
 									each move, i in moves
 										option(value=i+1) #{move.name}
+
 						.col-md-3.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_met_lv', method='POST')
 								label(for='pokemon_met_lv', style='padding-right:5px') Met Level
 								input(id="pokemon_met_lv" type='text', name="metlv")
+
 							form(action='/choose_met_date', method='POST')
 								label(for="pokemon_met_date",style='padding-right:5px') Met Date
 								input(id="pokemon_met_date" type='date', name="metdate")
+
 							form(action='/choose_pokemon_met_location', method='POST')
 								label(for='pokemon_met_location', style='padding-right:5px') Met Location
 								select(id="pokemon_met_location")
 									each nature, i in natures
 										option(value=nature.type) #{nature.type}
+
 							form(action='/choose_pokemon_pokemon', method='POST')
 								label(for='pokemon_pokeball', style='padding-right:5px') Pokeball
 								select(id="pokemon_pokeball")
 									each nature, i in natures
 										option(value=nature.type) #{nature.type}
+
 							form(action='/choose_pokemon_game', method='POST')
 								label(for='pokemon_game', style='padding-right:5px') Game of Origin
 								select(id="pokemon_game")

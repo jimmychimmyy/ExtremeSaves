@@ -31,11 +31,38 @@ function selectPokemonInBox(index) {
 /* call server to save slot change */
 function saveSlot() {
 	// save every element of the pokemon
+	var species = document.getElementById('pokemon_type');
+	var nickname = document.getElementById('pokemon_nickname');
+	var LV = document.getElementById('pokemon_lv');
+	var happy = document.getElementById('pokemon_happy');
+	var shiny = document.getElementById('pokemon_shiny');
+	var nature = document.getElementById('pokemon_nature');
+	var ability = document.getElementById('pokemon_ability');
+	var moveA = document.getElementById('pokemon_move_a');
+	var moveB = document.getElementById('pokemon_move_b');
+	var moveC = document.getElementById('pokemon_move_c');
+	var moveD = document.getElementById('pokemon_move_d');
+	var metLV = document.getElementById('pokemon_met_lv');
+	var metDate = document.getElementById('pokemon_met_date');
+	var metLocation = document.getElementById('pokemon_met_location');
+	var pokeball = document.getElementById('pokemon_pokeball');
+	var gameOrigin = document.getElementById('pokemon_game');
+
+	// create JSON object
+	// send POST reques to server to save into db
 }
 
 /* call server to save trainer change */
 function saveTrainer() {
 	// save every element of the trainer
+	var name = document.getElementById('trainer_name');
+	var gender = document.getElementById('trainer_gender');
+	var pid = document.getElementById('trainer_id');
+	var sid = document.getElementById('trainer_sid');
+	var startDate = document.getElementById('trainer_startdate');
+
+	// create JSON object
+	// send POST request to server to save into db
 }
 
 /* checks pokemon's met level (must be equal/lower than current level) */
