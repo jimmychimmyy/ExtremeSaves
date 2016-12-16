@@ -38,15 +38,20 @@ router.get('/getbulbasaur', function(req, res) {
 router.post('/saveslot', function(req, res) {
     var db = req.db;
     var savefiles = db.get('savefiles');
+    var body = req.body;
+    res.send(body);
+    /*
     savefiles.find({}, {}, function(e, docs) { // TODO find the user's savefile then update pokemon based on slot number
         if (e) return;
 
-    });
+    });*/
 });
 
 /* function to save edited trainer */
 router.post('/savetrainer', function(req, res) {
-
+    var db = req.db;
+    var data = req.body;
+    res.send(data);
 });
 
 /* function to load current slot */
@@ -210,7 +215,9 @@ router.get('/sayhello', function(req, res) {
     console.log("hello");
 });
 
+
 /* POST to add a single trainer to savefile */
+/*
 router.post('/savetrainer', function(req, res) {
     var db = req.db;
     var data = req.body;
@@ -227,7 +234,7 @@ router.post('/savetrainer', function(req, res) {
             res.send("successfully added trainer to savefiles");
         }
     });
-});
+}); */
 
 /* POST to Add User Service */
 router.post('/adduser', function(req, res) {
