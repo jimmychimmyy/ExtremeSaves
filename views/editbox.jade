@@ -183,7 +183,7 @@ center
 						.col-md-3.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_met_lv', method='POST')
 								label(for='pokemon_met_lv', style='padding-right:5px') Met Level
-								input(id="pokemon_met_lv" type='text', name="metlv")
+								input(id="pokemon_met_lv" type='text', name="metlv", onChange='checkMetLv()')
 
 							form(action='/choose_met_date', method='POST')
 								label(for="pokemon_met_date",style='padding-right:5px') Met Date

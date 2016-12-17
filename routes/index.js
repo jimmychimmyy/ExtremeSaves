@@ -51,6 +51,7 @@ router.post('/saveslot', function(req, res) {
 router.post('/savetrainer', function(req, res) {
     var db = req.db;
     var data = req.body;
+    
     res.send(data);
 });
 
@@ -65,15 +66,51 @@ router.post('/gettrainer', function(req, res) {
 });
 
 /* function to create default savefile */
-router.post('/startcustomizing', function(req, res) {
+router.post('/startcustom', function(req, res) {
     var db = req.db;
     var data = req.body;
     var savefiles = db.get('savefiles');
-    savefiles.find({'email':data.email}, {}, function(e, docs) {
-        if (e) {
-            // it doesnt exist, create a new entry
+    savefiles.find({'email':data.email}, function(e, docs) {
+        if (e) return;
+        console.log("number of records: " + docs.length);
+        if (docs.length == 0) {
+            // if no docs exists, then create new entry
+            var str = data.email + " does not have savefile, proceeding to create new";
+            res.send(str);
         } else {
-            // it does exist, ask user if they want to preload their old save file or start new
+            // else, ask user if they want to continue or start new
+            var str = data.email + " has a savefile, would you like to continue or start new?";
+            res.send(str);
+        }
+    });
+});
+
+router.post('/createdefaultsavefile', function(req, res) {
+    var db = req.db;
+    var data = req.body;
+    var savefiles = db.get('savefiles')
+    savefiles.find({'email':data.email}, function(e, docs) {
+        if (e) return;
+        console.log("number of records: " + docs.length);
+        if (docs.length == 0) {
+            // if no docs exists, then create new entry
+            var str = data.email + " does not have savefile, proceeding to create new";
+            // creating new savefile
+            var pokedex = db.get('pokedex');
+            pokedex.find({}, {}, function(e, docs) {
+                if (e) return;
+                savefiles.insert({'email':data.email, 'box':docs}, function(e, docs) {
+                    if (e) {
+                        console.log("error inserting to db");
+                        return;
+                    }
+                    console.log("successfully inserted to db");
+                })
+            });
+        } else {
+            // else, ask user if they want to continue or start new
+            var str = data.email + " has a savefile, would you like to continue or start new?";
+            res.send(str);
         }
     });
 });

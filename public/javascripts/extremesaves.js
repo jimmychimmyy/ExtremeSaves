@@ -13,14 +13,14 @@ function chooseTrainerGender() {
 }
 
 /* calls server to create default savefile for user */
-function startCustomizing() {
+function startCustom() {
 	//var email = document.getElementById(); // TODO need to start by getting user email
+	var user = "jimmychimmyy@gmail.com";
 
 	// POST request with email
-	var request = $.ajax({url: '/startcustomizing', type: 'POST'});
+	var request = $.post('/createdefaultsavefile',{email: user});
 	request.done(function(msg) {
 		console.log(msg);
-		// when ready, take user to edit trainer view
 	});
 }
 
@@ -138,20 +138,18 @@ function saveSlot() {
 	+ ", gameOrigin:" + gameOrigin + " }";
 
 	// send POST request to server to save into db
-	var jsonObj = JSON.stringify(str);
-	/*
-	var request = $.ajax({url: '/saveslot', type: 'POST'});
+	var jsonObj = JSON.stringify(str); // is this neccessary?
+	var request = $.post('/saveslot',{pokemon: jsonObj});
 	request.done(function(msg) {
 		console.log(msg);
-	});*/
-	console.log(jsonObj);
+	});
 }
 
 /* call server to save trainer change */
 function saveTrainer() {
 	// grab every element of the trainer
 	var name = document.getElementById('trainer_name').value;
-	var gender = document.getElementById('trainer_gender').checked;
+	var gender = document.getElementById('trainer_gender').value;
 	var pid = document.getElementById('trainer_id').value;
 	var sid = document.getElementById('trainer_sid').value;
 	var startDate = document.getElementById('trainer_startdate').value;
@@ -167,7 +165,14 @@ function saveTrainer() {
 
 	// send POST request to server to save into db
 	var jsonObj = JSON.stringify(str);
+
+	/*
 	var request = $.ajax({url: '/savetrainer', type: 'POST'});
+	request.done(function(msg) {
+		console.log(msg);
+	}); */
+
+	var request = $.post('/savetrainer', jsonObj);
 	request.done(function(msg) {
 		console.log(msg);
 	});
@@ -177,9 +182,20 @@ function saveTrainer() {
 function checkMetLv() {
 	var metLV = document.getElementById('pokemon_met_lv');
 	var currentLV = document.getElementById('pokemon_lv');
-	if (metLV > currentLV) {
-		metLV.value = currentLV;
+
+	if (metLV.value > 100) {
+		metLV.value = 100;
+	} else if (metLV.value < 1) {
+		metLV.value = 1;
+	} else {
+		metLV.value = metLV.value;
 	}
+
+	if (metLV.value > currentLV.value) {
+		metLV.value = currentLV.value;
+	}
+
+	// TOOD if level is set before met level, then automatically set lv == met level
 }
 
 /* checks the pokemon's max level, if it is over 100, then reset it to 100, if under 1 then reset to 1 */
