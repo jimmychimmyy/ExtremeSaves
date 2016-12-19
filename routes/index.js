@@ -176,7 +176,8 @@ router.get('/moves', function(req, res) {
 });
 
 /* GET editbox page */
-router.get('/editbox', function(req, res) {
+router.get('/editbox/:key?', function(req, res) {
+    var key = req.params.key;
     var db = req.db;
     var pokedex = null;
     var natures = null;

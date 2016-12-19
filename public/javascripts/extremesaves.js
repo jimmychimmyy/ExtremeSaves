@@ -128,7 +128,9 @@ function editBox(event) {
 	//alert(event);
 	//console.log(event);
 	var tags = event.getElementsByClassName("panel-heading")[0].innerHTML;
-	console.log(tags);
+	var res = tags.replace("Box ", "");
+	console.log(res);
+	window.location.href = "/editbox/" + res;
 }
 
 /* calls server to create default savefile for user */
