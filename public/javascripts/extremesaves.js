@@ -123,6 +123,14 @@ function goright() {
 	}
 }
 
+/* function to start editing a single box */
+function editBox(event) {
+	//alert(event);
+	//console.log(event);
+	var tags = event.getElementsByClassName("panel-heading")[0].innerHTML;
+	console.log(tags);
+}
+
 /* calls server to create default savefile for user */
 function startCustom() {
 	var email = document.getElementById("email"); // TODO need to start by getting user email
