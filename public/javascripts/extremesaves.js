@@ -4,11 +4,122 @@ function chooseTrainerGender() {
 	var opt = doc.options[doc.selectedIndex].value;
 
 	if (opt == 1) {
-		var img = document.getElementById('trainerimg').src = "http://vignette4.wikia.nocookie.net/nintendo/images/3/31/Red.png/revision/latest?cb=20111124132055&path-prefix=en"
+		var img = document.getElementById('trainerimg').src = "https://s-media-cache-ak0.pinimg.com/236x/04/2f/14/042f1455d682f0b04b5cc09f6395a095.jpg"
 	}
 
 	if (opt == 2) {
-		var img = document.getElementById('trainerimg').src = "https://s-media-cache-ak0.pinimg.com/originals/86/e6/59/86e659678fddd953c8228520abf62f70.jpg"
+		var img = document.getElementById('trainerimg').src = "https://s-media-cache-ak0.pinimg.com/236x/00/45/a2/0045a2991d82b98e41d854680ab2d14a.jpg"
+	}
+}
+
+/* following two functions are used to navigate between boxes in index.jade */
+function goleft() {
+	//console.log("go left");
+	var box = document.getElementById('1box').getElementsByClassName("panel-heading")[0];
+	//console.log(box);
+	if (box.innerHTML == "Box 6") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 1";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 2";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 3";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 4";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 5";
+	} else if (box.innerHTML == "Box 1") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 31";
+		document.getElementById('2box').style.visibility = "hidden";
+		document.getElementById('3box').style.visibility = "hidden";
+		document.getElementById('4box').style.visibility = "hidden";
+		document.getElementById('5box').style.visibility = "hidden";
+	} else if (box.innerHTML == "Box 31") {
+		document.getElementById('2box').style.visibility = "visible";
+		document.getElementById('3box').style.visibility = "visible";
+		document.getElementById('4box').style.visibility = "visible";
+		document.getElementById('5box').style.visibility = "visible";
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 26";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 27";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 28";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 29";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 30";
+	} else if (box.innerHTML == "Box 26") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 21";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 22";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 23";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 24";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 25";
+	} else if (box.innerHTML == "Box 21") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 16";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 17";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 18";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 19";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 20";
+	} else if (box.innerHTML == "Box 16") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 11";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 12";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 13";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 14";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 15";
+	} else if (box.innerHTML == "Box 11") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 6";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 7";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 8";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 9";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 10";
+	} else {
+
+	}
+}
+
+function goright() {
+	//console.log("go right");
+	var box = document.getElementById('1box').getElementsByClassName("panel-heading")[0];
+	//console.log(box);
+	if (box.innerHTML == "Box 1") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 6";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 7";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 8";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 9";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 10";
+	} else if (box.innerHTML == "Box 6") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 11";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 12";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 13";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 14";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 15";
+	} else if (box.innerHTML == "Box 11") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 16";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 17";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 18";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 19";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 20";
+	} else if (box.innerHTML == "Box 16") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 21";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 22";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 23";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 24";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 25";
+	} else if (box.innerHTML == "Box 21") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 26";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 27";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 28";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 29";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 30";
+	} else if (box.innerHTML == "Box 26") {
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 31";
+		document.getElementById('2box').style.visibility = "hidden";
+		document.getElementById('3box').style.visibility = "hidden";
+		document.getElementById('4box').style.visibility = "hidden";
+		document.getElementById('5box').style.visibility = "hidden";
+	} else if (box.innerHTML == "Box 31") {
+		document.getElementById('2box').style.visibility = "visible";
+		document.getElementById('3box').style.visibility = "visible";
+		document.getElementById('4box').style.visibility = "visible";
+		document.getElementById('5box').style.visibility = "visible";
+		document.getElementById('1box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 1";
+		document.getElementById('2box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 2";
+		document.getElementById('3box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 3";
+		document.getElementById('4box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 4";
+		document.getElementById('5box').getElementsByClassName("panel-heading")[0].innerHTML = "Box 5";
+	} else {
+
 	}
 }
 

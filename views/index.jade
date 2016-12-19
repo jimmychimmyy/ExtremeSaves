@@ -49,59 +49,90 @@ nav.navbar.navbar-default(role="navigation")
 //		+panel("Box 0", "success").center-block: a( href="editbox" ) Edit
 
 
-.col-md-8.col-sm-6.col-xs-12
-		div(id="currentpokemon" style="margin-top:20px;margin-left:10px;margin-right:10px")
-				center
-					img(src="http://vignette4.wikia.nocookie.net/nintendo/images/3/31/Red.png/revision/latest?cb=20111124132055&path-prefix=en" width="100" id="trainerimg" style="margin-bottom:20px;margin-top:-15px")
-					br
-					
-					label(for="padding",style='padding-top:-120px') 
-						button("primary", "javascript:void(0)" onclick="saveTrainer()") Update Trainer
-						br
-						label(for="padding",style='padding-top:-120px')
+.col-md-8.col-sm-6.col-xs-12				
+	+panel("Customize your Trainer!", "Trainer Card")
+					.col-md-12.col-sm-12.col-xs-12
+						center
+							img(src="https://s-media-cache-ak0.pinimg.com/236x/04/2f/14/042f1455d682f0b04b5cc09f6395a095.jpg" width="100" id="trainerimg" style="margin-bottom:20px;margin-top:5px")
 
-				+panel("Customize your Trainer!")
-					.col-md-5.col-sm-6.col-xs-12
-						form(action='/choose_trainer_name', method='POST')
-							label(for="trainer_name",style='padding-right:5px') Name
-							input(id="trainer_name" type='text', name="trainer_name" maxlength="7")
+							form(action='/choose_trainer_name', method='POST')
+								label(for="trainer_name",style='padding-right:5px') Name
+								input(id="trainer_name" type='text', name="trainer_name" maxlength="7")
 
-						form(action='/choose_trainer_gender', method='POST')
-							label(for='trainer_gender', style='padding-right:5px;padding-top:5px') Gender
-							select(id="trainer_gender" onchange="chooseTrainerGender()") // will need to put the select inside a form in order to get data
-								- genders = ['Male', 'Female']
-								each gender, i in genders
-									option(value=i+1) #{gender}
-							script(src="/javascripts/extremesaves.js")
+							form(action='/choose_trainer_gender', method='POST')
+								label(for='trainer_gender', style='padding-right:5px;padding-top:5px') Gender
+								select(id="trainer_gender" onchange="chooseTrainerGender()") // will need to put the select inside a form in order to get data
+									- genders = ['Male', 'Female']
+									each gender, i in genders
+										option(value=i+1) #{gender}
+								script(src="/javascripts/extremesaves.js")
 
-						form(action='/choose_trainer_id', method='POST')
-							label(for="trainer_id",style='padding-right:5px') ID
-							input(id="trainer_id" type='text', name="trainer_id" maxlength="6")
+							form(action='/choose_trainer_id', method='POST')
+								label(for="trainer_id",style='padding-right:5px') ID
+								input(id="trainer_id" type='text', name="trainer_id" maxlength="6")
 
-						form(action='/choose_trainer_sid', method='POST')
-							label(for="trainer_sid",style='padding-right:5px') Secret ID
-							input(id="trainer_sid" type='text', name="trainer_sid" maxlength="6")
+							form(action='/choose_trainer_sid', method='POST')
+								label(for="trainer_sid",style='padding-right:5px') Secret ID
+								input(id="trainer_sid" type='text', name="trainer_sid" maxlength="6")
 
-						form(action='/choose_trainer_startdate', method='POST')
-							label(for="trainer_startdate",style='padding-right:5px') Start Date
-							input(id="trainer_startdate" type='date', name="trainer_sid")
+							form(action='/choose_trainer_startdate', method='POST')
+								label(for="trainer_startdate",style='padding-right:5px') Start Date
+								input(id="trainer_startdate" type='date', name="trainer_sid")
+
 		center
+			label(for="padding",style='padding-top:-120px') 
+						button("primary", "javascript:void(0)" onclick="saveTrainer()") Update Trainer
+						label(for="padding",style='padding-top:-120px;margin-right:10px')
+
 			script(src="/javascripts/extremesaves.js")
 			script.
 			button("primary", "javascript:void(0)" onclick="submit()") Finish
 			br
 			label(for="padding",style='padding-right:5px') 
 div.col
-	.col-md-2.col-sm-5.col-xs-12
-		- for (var i = 1; i <= 16; i++) {
+	center
+		button("primary", "javascript:void(0)" onclick="goleft()") <
+		select(id="pokemon_nature" style="margin-left:80px;margin-right:80px")
+				<option label="Box 1">1</option>
+				<option label="Box 2">2</option>
+				<option label="Box 3">3</option>
+				<option label="Box 4">4</option>
+				<option label="Box 5">5</option>
+				<option label="Box 6">6</option>
+				<option label="Box 7">7</option>
+				<option label="Box 8">8</option>
+				<option label="Box 9">9</option>
+				<option label="Box 10">10</option>
+				<option label="Box 11">11</option>
+				<option label="Box 12">12</option>
+				<option label="Box 13">13</option>
+				<option label="Box 14">14</option>
+				<option label="Box 15">15</option>
+				<option label="Box 16">16</option>
+				<option label="Box 17">17</option>
+				<option label="Box 18">18</option>
+				<option label="Box 19">19</option>
+				<option label="Box 20">20</option>
+				<option label="Box 21">21</option>
+				<option label="Box 22">22</option>
+				<option label="Box 23">23</option>
+				<option label="Box 24">24</option>
+				<option label="Box 25">25</option>
+				<option label="Box 26">26</option>
+				<option label="Box 27">27</option>
+				<option label="Box 28">28</option>
+				<option label="Box 29">29</option>
+				<option label="Box 30">30</option>
+				<option label="Box 31">31</option>
+		button("primary", "javascript:void(0)" onclick="goright()") >
+		br
+		br
+	.col-md-4.col-sm-6.col-xs-12
+		- for (var i = 1; i <= 5; i++) {
 			a(href="editbox")
-				+panel(i, "Box " + i, "info")
+				+panel(i+"box", "Box " + i, "info")
 		- }
-	.col-md-2.col-sm-5.col-xs-12
-		- for (var i = 17; i <= 32; i++) {
-			a(href="editbox")
-				+panel(i, "Box " + i, "info")
-		- }
+
 
 // Trainer
 // name - form (max 7 chars)
