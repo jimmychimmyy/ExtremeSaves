@@ -14,13 +14,19 @@ function chooseTrainerGender() {
 
 /* calls server to create default savefile for user */
 function startCustom() {
-	//var email = document.getElementById(); // TODO need to start by getting user email
+	var email = document.getElementById("email"); // TODO need to start by getting user email
 	var user = "jimmychimmyy@gmail.com";
+
+	if (!email.checkValidity()) { //if not valid email, alert user
+		alert("You must enter a valid email");
+		return;
+	}
 
 	// POST request with email
 	var request = $.post('/createdefaultsavefile',{email: user});
 	request.done(function(msg) {
 		console.log(msg);
+		window.location.href = "/edit";
 	});
 }
 

@@ -6,6 +6,16 @@ router.get('/', function(req, res, next) {
     var db = req.db;
     var collection = db.get('pokedex');
     collection.find({}, {}, function(e, docs) {
+        res.render('landing', {
+            "pokedex" : docs
+        });
+    });
+});
+
+router.get('/edit', function(req, res, next) {
+    var db = req.db;
+    var collection = db.get('pokedex');
+    collection.find({}, {}, function(e, docs) {
         res.render('index', {
             "pokedex" : docs
         });

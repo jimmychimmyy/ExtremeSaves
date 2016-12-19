@@ -1,0 +1,62 @@
+include mixins
+doctype
+html( lang="en" )
+	head
+		title Extreme Saves
+		meta( charset='utf-8' )
+		meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+		meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+		meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+		//- Bootswatch Theme
+		link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
+		//- my theme
+		link(href="stylesheets/index.css", rel="stylesheet")
+
+	body(style="padding-bottom:10rem;")
+		.container
+ 
+		script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+		script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+		script(src="/javascripts/extremesaves.js")
+
+nav.navbar.navbar-default(role="navigation")
+	.navbar-header
+		button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
+			span.sr-only Toggle navigation
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+		a.navbar-brand(href="/") Extreme Saves
+ 
+	#navbar-inverse.collapse.navbar-collapse
+		ul.nav.navbar-nav
+			//li.active: a( href="/") Home
+			//li: a( href="#about" ) About
+			//li: a( href="#contact" ) Contact
+			//li.dropdown
+				a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Dropdown 
+					span.caret
+				ul.dropdown-menu( role="menu" )
+					li: a( href="#" ) Action
+					li: a( href="#" ) Another action
+					li: a( href="#" ) Something else here
+					li.divider
+					li.dropdown-header Nav header
+					li: a( href="#" ) Separated link
+					li: a( href="#" ) One more separated link
+
+img(src="http://i.imgur.com/zN63vF3.png" style="margin-top:-25px" width="100%" id="trainerimg")
+
+br
+br
+
+center
+	+panel("Customize your Pokémon!", "Welcome to the Pokémon Sun/Moon Personalizer!")
+		This This powerful tool will enable you to edit every possible aspect of the 540 Pokémon included in the Pokémon HG/SS game you will be purchasing. Preview screenshots show your Pokémon exactly as they appear in the game. To maximize your personalization experience, please make sure that JavaScript and cookies are enabled. Without further ado, please enter your email and click begin to start personalizing. Click on the trainer card to choose the name and gender of your in-game character. Click on the box icons to edit the 803 Pokémon in your storage boxes, accessible via the PC in any Pokémon Center.
+
+	form(action='/enteremail', method='POST')
+	p
+			label 
+				input(id="email" type='email',name='user[email]',placeholder='Enter your email',required)
+				label(for="padding",style='padding-top:-120px')
+						button("primary", "javascript:void(0)" onclick="startCustom()") Begin
