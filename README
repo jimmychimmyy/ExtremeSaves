@@ -3,12 +3,12 @@ to start db use mongod --dbpath ~/path/to/pokemon/data
 to start server use npm start
 
 TODO
-- make input fields (such as lv) accept only numbers
-- fill database (abilities, moves, met locations, games, pokeball, items)
-- generate save file
-- update save file every time a pokemon is edited (save changes is clicked inside editbox)
-- trainer information needs to save (when update trainer is clicked)
-- need to load save file into edit box and home page/trainer info)
+- make input fields (such as lv) accept only numbers ABOUT DONE, DOUBLE CHECK
+- fill database (abilities, moves, met locations, games, pokeball, items) ALMOST DONE, NEED TO SET REFERENCES AND FILL POKEDEX & ITEMS
+- generate save file DONE (still need to change default email of jimmychimmyy to DEFAULT@EXTREMESAVES.COM"))
+- update save file every time a pokemon is edited (save changes is clicked inside editbox) DONE
+- trainer information needs to save (when update trainer is clicked) DONE BUT NEED TO MAKE CHANGES IN SERVER TOO (missing server side function)
+- need to load save file into edit box and home page/trainer info) ABOUT DONE
 
 12/21/16
 - need to fill db

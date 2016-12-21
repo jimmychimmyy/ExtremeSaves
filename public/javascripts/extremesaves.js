@@ -232,8 +232,11 @@ function initBox() {
 	var user = "jimmychimmyy@gmail.com";
 	var request = $.post('/getbox',{email: user, box: box});
 	request.done(function(msg) {
-		console.log(msg);
-		console.log("need to load imgs now");
+		//console.log(msg);
+		var name = msg[0].name;
+		var lower = name.toLowerCase();
+		var current = document.getElementById('currentpokemonimg');
+		current.src = "https://img.pokemondb.net/artwork/" + lower + ".jpg";
 		for (var i = 0; i < 30; i++) {
 			var name = msg[i].name;
 			var lower = name.toLowerCase();
