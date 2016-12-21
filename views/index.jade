@@ -25,7 +25,7 @@ nav.navbar.navbar-default(role="navigation")
 			span.icon-bar
 			span.icon-bar
 			span.icon-bar
-		a.navbar-brand(href="/") Extreme Saves
+		a.navbar-brand(href="javascript:void(0)" onclick="confirmExit()") Extreme Saves
  
 	#navbar-inverse.collapse.navbar-collapse
 		ul.nav.navbar-nav
@@ -92,7 +92,7 @@ nav.navbar.navbar-default(role="navigation")
 div.col
 	center
 		button("primary", "javascript:void(0)" onclick="goleft()") <
-		select(id="pokemon_nature" style="margin-left:80px;margin-right:80px")
+		select(id="box" style="margin-left:80px;margin-right:80px" onchange="getBox()")
 				<option label="Box 1">1</option>
 				<option label="Box 2">2</option>
 				<option label="Box 3">3</option>

@@ -123,6 +123,13 @@ function goright() {
 	}
 }
 
+function confirmExit() {
+	if(confirm("Do you really want exit? All progress will be lost"))
+    	window.location.href = "/";
+  	else
+    	return false;
+}
+
 /* function to start editing a single box */
 function editBox(event) {
 	//alert(event);
@@ -131,6 +138,14 @@ function editBox(event) {
 	var res = tags.replace("Box ", "");
 	console.log(res);
 	window.location.href = "/editbox/" + res;
+}
+
+/* function to jump directly to box (using drop down list) */
+function getBox() {
+	var box = document.getElementById("box");
+	var num = box.options[box.selectedIndex].value;
+	//console.log(num);
+	window.location.href = "/editbox/" + num;
 }
 
 /* calls server to create default savefile for user */
@@ -184,6 +199,13 @@ function selectPokemonInBox(index) {
 	} else {
 		select.className ='panel panel-danger';	
 	}
+}
+
+function selectPokemonInSlot(event) {
+	//console.log(event.id);
+	var res = event.id.replace("slot:", "");
+	console.log(res);
+
 }
 
 /* udpates selected pokemon img */
