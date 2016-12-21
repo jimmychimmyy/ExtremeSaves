@@ -9,3 +9,16 @@ TODO
 - update save file every time a pokemon is edited (save changes is clicked inside editbox)
 - trainer information needs to save (when update trainer is clicked)
 - need to load save file into edit box and home page/trainer info)
+
+12/21/16
+- need to fill db
+	- pokedex { species, typeA, typeB, [moves], [abilites], [locations] } *note that each move must also have a reference to learned at level
+	- items
+	- locations
+- need to send email to user when they begin
+- need to save changes when update trainer is clicked inside /edit
+- need to make global setters (make all shiny/change pokeball) 
+- need to connect Save Changes button inside editbox to server to update savefile inside db
+- need to perform checks (eg. bulbasaur can only learn from this movepool) DO THIS AFTER FILLING UP DB
+- will also need a level/move check (eg. this move can only be learned at this level and up)
+

@@ -234,6 +234,13 @@ function initBox() {
 	request.done(function(msg) {
 		console.log(msg);
 		console.log("need to load imgs now");
+		for (var i = 0; i < 30; i++) {
+			var name = msg[i].name;
+			var lower = name.toLowerCase();
+			var img = document.getElementById('slot:'+(i+1));
+			img.src = "https://img.pokemondb.net/artwork/" + lower + ".jpg";
+			// WORKS BUT NEED TO WATCH OUT FOR EXTRA SYMBOLS
+		}
 	});
 
 	// get the slots in the box number inside savefiles
