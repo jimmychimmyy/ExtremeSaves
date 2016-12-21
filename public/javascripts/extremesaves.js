@@ -205,8 +205,8 @@ function selectPokemonInBox(index) {
 function selectCurrentPokemon(selected) {
 	var species = document.getElementById('pokemon_type').value;
 	var name = selected.options[species-1].text;
-	console.log(species);
-	console.log(name);
+	//console.log(species);
+	//console.log(name);
 	var lower = name.toLowerCase();
 	var img = document.getElementById('currentpokemonimg');
 	img.src = "https://img.pokemondb.net/artwork/" + lower + ".jpg";
@@ -216,6 +216,30 @@ function selectPokemonInSlot(event) {
 	//console.log(event.id);
 	var res = event.id.replace("slot:", "");
 	console.log(res);
+
+}
+
+/* this function fills the box with the correct pokemon based on box number */
+function initBox() {
+	console.log("initBox");
+	var chunks = document.URL.split('/');
+	var box = chunks[chunks.length-1];
+	console.log(box);
+
+	// post request to server
+	// params box number and email
+	// need to get box number from url
+	var user = "jimmychimmyy@gmail.com";
+	var request = $.post('/getbox',{email: user, box: box});
+	request.done(function(msg) {
+		console.log(msg);
+		console.log("need to load imgs now");
+	});
+
+	// get the slots in the box number inside savefiles
+	// ex. if in box two. get pokemon at 31 to 60.
+	// return here
+	// load images from html into boxes for each pokemon
 
 }
 

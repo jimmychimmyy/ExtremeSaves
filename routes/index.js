@@ -12,6 +12,36 @@ router.get('/', function(req, res, next) {
     });
 });
 
+/* function to get list of (edited) pokemon in specified box */
+router.post('/getbox', function(req, res) {
+    // get the slots in the box number inside savefiles
+    // ex. if in box two. get pokemon at 31 to 60.
+    // return here
+    var db = req.db;
+    var data = req.body; // data.email data.box
+    console.log("boxnum: " + data.box);
+    var slots = (data.box * 30); // this is how many slots to skip
+    console.log("slots: " + slots);
+    var start = slots - 30;
+    console.log("start: " + start);
+    var savefiles = db.get('savefiles');
+    savefiles.find({'email':data.email}, function(e, docs) {
+        if (e) return;
+        if (docs.length == 0) {
+            // should not happen exit with error
+            return;
+            res.end("404");
+        } else {
+            var pokemon = new Array(0);
+            for (var i = start; i < slots; i++) {
+                //console.log(docs[0].box[i]);
+                pokemon.push(docs[0].box[i]);
+            }
+            res.send(pokemon);
+        }
+    });
+});
+
 router.get('/edit', function(req, res, next) {
     var db = req.db;
     var collection = db.get('pokedex');
@@ -210,7 +240,8 @@ router.get('/editbox/:key?', function(req, res) {
                 "pokedex" : pokedex,
                 "natures" : natures,
                 "moves" : moves,
-                "abilities" : abilities
+                "abilities" : abilities,
+                // need to pass the page number to editbox
             });
         }
     }
