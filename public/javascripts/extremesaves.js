@@ -201,6 +201,17 @@ function selectPokemonInBox(index) {
 	}
 }
 
+/* function to change the image of the currently selected pokemon */
+function selectCurrentPokemon(selected) {
+	var species = document.getElementById('pokemon_type').value;
+	var name = selected.options[species-1].text;
+	console.log(species);
+	console.log(name);
+	var lower = name.toLowerCase();
+	var img = document.getElementById('currentpokemonimg');
+	img.src = "https://img.pokemondb.net/artwork/" + lower + ".jpg";
+}
+
 function selectPokemonInSlot(event) {
 	//console.log(event.id);
 	var res = event.id.replace("slot:", "");

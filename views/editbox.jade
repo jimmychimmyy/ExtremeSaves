@@ -70,7 +70,7 @@ br
 br
 center
 	br
-	table#cameras(style="margin-left:25px;margin-right:25px")
+	table#slots(style="margin-left:25px;margin-right:25px")
 		thead
 		tbody
 			- for (var i = 1; i <= 6; i++) { //a(href="#{i}")
@@ -108,7 +108,7 @@ center
 	center
 			div(id="currentpokemon" style="margin-top:25px;margin-left:10px;margin-right:10px")
 					center
-						img(src="http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758" width="200" id="currentpokemonimg" style="margin-bottom:15px;margin-top:-15px")
+						img(src="https://img.pokemondb.net/artwork/bulbasaur.jpg" width="200" id="currentpokemonimg" style="margin-bottom:15px;margin-top:-15px")
 
 					center
 						label(for="padding",style='padding-top:-120px') 
@@ -121,8 +121,8 @@ center
 					+panel("Customize your Pokémon!")
 						.col-md-5.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_type', method='POST')
-								label(for='pokemon_type', style='padding-right:5px') Pokemon
-								select(id="pokemon_type" onchange="sayHello()") // will need to put the select inside a form in order to get data
+								label(for='pokemon_type', style='padding-right:5px') Species
+								select(id="pokemon_type" onChange="selectCurrentPokemon(this)") // will need to put the select inside a form in order to get data
 									each pokemon, i in pokedex
 										option(value=i+1) #{pokemon.name}
 								script(src="/javascripts/extremesaves.js")
@@ -155,6 +155,12 @@ center
 									each ability, i in abilities
 										option(value=i+1) #{ability.name}
 
+							form(action='/choose_pokemon_item', method='POST')
+								label(for='pokemon_item', style='padding-right:5px') Held Item
+								select(id="pokemon_item")
+									each ability, i in abilities
+										option(value=i+1) #{ability.name}
+
 						.col-md-3.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_move_a', method='POST')
 								label(for='pokemon_move_a', style='padding-right:5px') Move 1
@@ -182,7 +188,7 @@ center
 
 						.col-md-3.col-sm-6.col-xs-12
 							form(action='/choose_pokemon_met_lv', method='POST')
-								label(for='pokemon_met_lv', style='padding-right:5px') Met Level
+								label(for='pokemon_met_lv', style='padding-right:5px') Met LV
 								input(id="pokemon_met_lv" type='text', name="metlv", onChange='checkMetLv()')
 
 							form(action='/choose_met_date', method='POST')

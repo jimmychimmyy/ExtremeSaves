@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var fs = require('fs');
 
+// https://img.pokemondb.net/artwork/*.jpg
+// where * is the pokemon species
+// use this to get images
+
 /*
 // this is the server
 var server = http.createServer(function(req, res) {
