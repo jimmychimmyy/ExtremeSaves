@@ -242,6 +242,7 @@ function initBox() {
 			var lower = name.toLowerCase();
 			var img = document.getElementById('slot:'+(i+1));
 			img.src = "https://img.pokemondb.net/artwork/" + lower + ".jpg";
+			//img.src = "https://img.pokemondb.net/sprites/x-y/normal/" + lower + ".png";
 			// WORKS BUT NEED TO WATCH OUT FOR EXTRA SYMBOLS
 		}
 	});

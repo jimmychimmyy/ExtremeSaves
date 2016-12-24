@@ -1,5 +1,4 @@
-to start db use mongod --dbpath ~/path/to/pokemon/data
-
+to start db use mongod --dbpath ~/pathtopokemon/data
 to start server use npm start
 
 TODO
@@ -22,3 +21,11 @@ TODO
 - need to perform checks (eg. bulbasaur can only learn from this movepool) DO THIS AFTER FILLING UP DB
 - will also need a level/move check (eg. this move can only be learned at this level and up)
 
+12/23/16
+- started getting data to fill species table
+- for learnedmoves, need to keep the second file, delete the first
+- then add each move as a key value pair into the species (pokedex) table. (ie. { move : levelLearned })
+
+- for specieslocations, need to remove files that give description and keep files that give location (try keeping files that have "trade/migrate")
+
+- use the csv files to get species type and abilities (grep for National))
